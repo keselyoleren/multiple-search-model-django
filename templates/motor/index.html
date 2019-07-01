@@ -1,0 +1,94 @@
+{% extends 'layouts/main.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+{% endblock %}
+
+{% block content %}
+
+<button type="button" class="btn btn-primary pull-left"  data-toggle="modal" data-target="#exampleModal">
+    Add motor
+</button>
+  
+
+<table id="example" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Thn Produksi</th>
+            <th>cc</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for list_motor in list_motor %}
+        <tr>
+            <td>{{ list_motor.nama }}</td>
+            <td>{{ list_motor.thn_produksi }}</td>
+            <td>{{ list_motor.cc_motor }}</td>
+            <td>
+                <a href="{% url 'edit' id=list_motor.id  %}" class="btn btn-info ">Edit</a>
+                <a href="{% url 'delete' id=list_motor.id  %}" class="btn btn-danger ">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Button trigger modal -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="POST">
+              {% csrf_token %}
+              <div class="form-group">
+                  <label for="">Nama Motor</label>
+                  <input type="text" name="nama" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label for="">Tahun Produksi</label>
+                <input type="text" name="thn_produksi" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="">cc Motor</label>
+                <input type="text" name="cc_motor" class="form-control">
+            </div>
+
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
+
+
+{% block js %}
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+</script>
+{% endblock %}

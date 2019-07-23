@@ -1,11 +1,11 @@
-# DJANGO CRUD
+# DJANGO MULTIPLE SEARCH MODEL
 
 ##### instalasi
 ```
-$ git clone https://github.com/keselyoleren/django-crud.git
+$ git clone https://github.com/keselyoleren/multiple-search-model-django.git
 ```
 ```
-$ cd djano-crud
+$ cd multiple-search-model-django
 ```
 ```
 $ pip install django==2.1

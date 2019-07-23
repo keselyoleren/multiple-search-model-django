@@ -1,0 +1,27 @@
+{% extends 'layouts/main.html' %}
+
+{% block content %}
+    <br><br><br><br><br>
+    <div class="container">
+        <form action="" method="GET">
+            <input type="text" name="search" class="form-control fa fa-search" placeholder="search ..">
+        </form>
+    </div>
+
+    <br><br>
+    <div class="continer">
+        <h1>Data Motor</h1>
+        {% for motor in motor %}
+            <li>
+                    <p>{{ motor.nama }} thn produksi {{ motor.thn_produksi }} cc {{ motor.cc_motor }}</p>
+            </li>
+        {% endfor %}
+        <br><br><br><hr>
+
+        <h1>Dealer</h1>
+        {% for dealer in dealer %}
+            <li><p>{{ dealer.nama }} Alamat {{ dealer.alamat }}</p></li>
+        {% endfor %}
+    </div>
+
+{% endblock %}

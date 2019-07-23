@@ -10,3 +10,7 @@ class Motor(models.Model):
 
     # def __init__(self):
     #     return self.nama
+class Dealer(models.Model):
+    nama = models.CharField(max_length=100)
+    alamat = models.CharField(max_length=100)
+    
